@@ -16,6 +16,7 @@
 
 #include <vector>
 #include <string>
+#include <unordered_map>
 
 namespace smf {
 
@@ -23,6 +24,8 @@ typedef unsigned char  uchar;
 typedef unsigned short ushort;
 typedef unsigned long  ulong;
 
+
+static std::vector<const std::string>& instruments();
 class MidiMessage : public std::vector<uchar> {
 
 	public:
@@ -62,6 +65,8 @@ class MidiMessage : public std::vector<uchar> {
 
 		// note-message convenience functions:
 		int            getKeyNumber         (void) const;
+		std::string    getKeyLetter         (void) const;
+		int            getKeyOctave         (void) const;
 		int            getVelocity          (void) const;
 		void           setKeyNumber         (int value);
 		void           setVelocity          (int value);
@@ -96,6 +101,7 @@ class MidiMessage : public std::vector<uchar> {
 		bool           isNote               (void) const;
 		bool             isNoteOff          (void) const;
 		bool             isNoteOn           (void) const;
+		bool            isProgramChange     (void) const;
 		bool           isAftertouch         (void) const;
 		bool           isController         (void) const;
 		bool             isSustain          (void) const;  // controller 64
@@ -161,6 +167,8 @@ class MidiMessage : public std::vector<uchar> {
 		bool           isEndOfTrack         (void) const;
 
 		std::string    getMetaContent       (void);
+		int            getProgramChannel    (void);
+		std::string    getInstrument        (void);
 		void           setMetaContent       (const std::string& content);
 		void           setTempo             (double tempo);
 		void           setTempoMicroseconds (int microseconds);
