@@ -25,7 +25,7 @@ typedef unsigned short ushort;
 typedef unsigned long  ulong;
 
 
-static std::vector<const std::string>& instruments();
+static std::vector<std::string>& instruments();
 class MidiMessage : public std::vector<uchar> {
 
 	public:

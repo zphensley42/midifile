@@ -15,13 +15,12 @@
 
 #include <vector>
 #include <iostream>
-#include <iterator>
 
 
 namespace smf {
 
-std::vector<const std::string>& instruments() {
-    static std::vector<const std::string> v {
+std::vector<std::string>& instruments() {
+    static std::vector<std::string> v {
         "Acoustic Grand Piano",
         "Bright Acoustic Piano",
         "Electric Grand Piano",
@@ -997,7 +996,7 @@ int MidiMessage::getKeyNumber(void) const {
 }
 
 std::string MidiMessage::getKeyLetter() const {
-    static std::vector<const std::string> key_letters {
+    static std::vector<std::string> key_letters {
         "C",
         "C#",
         "D",
